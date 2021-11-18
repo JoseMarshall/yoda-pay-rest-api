@@ -16,6 +16,7 @@ export enum ApiErrorsType {
 export enum ApiErrorsMessage {
   InternalError = 'An application error occurred, the server was unable to process your request',
   RouteNotFound = 'Route Not Found',
+  RequestProcessedError = 'The request was well-formed but was unable to be followed due to semantic errors',
 }
 
 export type ApiErrorsStatusCode =
