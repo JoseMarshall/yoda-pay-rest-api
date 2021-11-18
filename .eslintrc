@@ -40,8 +40,8 @@
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
     "no-param-reassign": "error",
-    "no-shadow": "error",
-    "no-unused-vars": "warn",
+    "no-shadow": "off",
+    "no-unused-vars": "off",
     "no-else-return": "warn"
   }
 }
