@@ -10,7 +10,7 @@ export function makeGetAllEntities<D extends Document, K>({
   model,
   options,
 }: MakeGetAllEntityData<D, K>) {
-  return async (query: QueryGetAll) => {
+  return async (query: QueryGetAll & Record<string, unknown>) => {
     const { page, limit, sortBy, ...filteredQuery } = query;
     const pageNumber = safeParseInt(page, 10);
     const docPerPage = safeParseInt(limit ?? '0', 10);

@@ -22,6 +22,8 @@ export enum ApiErrorsMessage {
   DeletedSuccessfully = 'Entity deleted successfully!',
   FoundSuccessfully = 'Entity found!',
   UpdatedSuccessfully = 'Entity updated successfully!',
+  FailureCreating = 'Failed to create the entity, probably due to some data entered incorrectly, please check your form data',
+  FailureUpdating = 'Failed to update the entity, probably due to some data entered incorrectly, please check the data on your form',
 }
 
 export type ApiErrorsStatusCode =

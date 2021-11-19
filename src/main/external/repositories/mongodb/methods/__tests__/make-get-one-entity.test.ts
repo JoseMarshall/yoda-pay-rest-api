@@ -39,11 +39,10 @@ describe(makeGetOneEntity.name, () => {
 
   it('should get the entity with the data formatted', async () => {
     const query = { id: entitiesCollections.accounts[0].id };
-    const formatData = (data: any) =>
-      ({
-        ...data,
-        newField: 'newValue',
-      } as any);
+    const formatData = data => ({
+      ...data,
+      newField: 'newValue',
+    });
 
     const result = await makeSutRequest(
       sut({

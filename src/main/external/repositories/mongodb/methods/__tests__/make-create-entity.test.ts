@@ -38,7 +38,6 @@ describe(makeCreateEntity.name, () => {
     const newAccount = new AccountBuilder().withName().build();
     try {
       await makeSutRequest(sut({ model }), newAccount);
-      // eslint-disable-next-line no-undef
       fail('Should not reach here');
     } catch (error) {
       expect(true);
