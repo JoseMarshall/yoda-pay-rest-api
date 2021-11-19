@@ -1,5 +1,4 @@
 import express from 'express';
-import { createServer } from 'http';
 
 import setupMiddleware from './middleware';
 import setupRoutes from './routes';

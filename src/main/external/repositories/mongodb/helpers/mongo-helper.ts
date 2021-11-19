@@ -33,9 +33,12 @@ export const MongoHelper: DatabaseHelper<Collection, Model<any>, Schema, typeof 
   },
 };
 
-export async function queryGuard<T>(fn: Query<T, any> | Promise<T | null>): Promise<T> {
+export async function queryGuard<T>(
+  fn: Query<T, any> | Promise<T | null>,
+  msg?: string
+): Promise<T> {
   const data = await fn;
-  if (!data) throw new Error();
+  if (!data) throw new Error(msg);
 
   return data;
 }
@@ -43,13 +46,13 @@ export async function queryGuard<T>(fn: Query<T, any> | Promise<T | null>): Prom
 if (client.connection.readyState === 0) {
   MongoHelper.connect()
     .then()
-    .catch(_error => {
+    .catch(() => {
       if (process.env.NODE_ENV !== 'test') {
         process.exit(1);
       }
     });
 }
 
-process.on('uncaughtException', _error => {
+process.on('uncaughtException', () => {
   process.exit(1);
 });

@@ -13,11 +13,10 @@ export function makeDeleteOneEntity<D extends Document>({
     const doc = await queryGuard<D>(
       model
         .findOneAndUpdate(
-          { id: query.id, disabled: false } as FilterQuery<unknown>,
+          { disabled: false, ...query } as FilterQuery<unknown>,
           { disabled: true, disabledAt: new Date() } as FilterQuery<unknown>,
           {
             projection: {
-              _id: 0,
               id: 1,
               disabled: 1,
               disabledAt: 1,

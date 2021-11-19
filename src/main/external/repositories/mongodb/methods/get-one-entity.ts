@@ -10,20 +10,11 @@ export function makeGetOneEntity<D extends Document, K>({
   options,
   transaction,
 }: MakeGetOneEntityData<D, K>) {
-  return async (query: Query) => {
-    const { id, ...q } = query;
+  return async (query: Query): Promise<K> => {
     const doc = await queryGuard<D>(
       model
-        .findOne(
-          { id, disabled: false, ...q } as FilterQuery<unknown>,
-          {
-            _id: 0,
-            ...(options.projection ?? {}),
-          },
-          {
-            session: transaction?.id ? transaction : undefined,
-          }
-        )
+        .findOne({ disabled: false, ...query } as FilterQuery<unknown>, options.projection)
+        .session(transaction?.id ? transaction : null)
         .lean()
     );
 

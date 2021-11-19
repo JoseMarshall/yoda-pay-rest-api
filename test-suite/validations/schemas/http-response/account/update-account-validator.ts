@@ -1,5 +1,3 @@
-import joi from 'joi';
-
 import joiValidator from '../../index';
 import accountSchema from './account-schema';
 

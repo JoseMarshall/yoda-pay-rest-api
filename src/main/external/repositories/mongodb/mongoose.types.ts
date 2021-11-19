@@ -3,7 +3,7 @@ import { ClientSession, Document, Model } from 'mongoose';
 export interface MakeGetAllEntitiesDependencies<D, K> {
   projection?: Record<string, 0 | 1 | boolean>;
   formatData?: (data: ReadonlyArray<D>) => ReadonlyArray<K>;
-  formatQuery?: (query: Record<string, string> | {}) => Record<string, unknown>;
+  formatQuery?: (query: Record<string, string | unknown>) => Record<string, unknown>;
 }
 
 export interface MakeGetOneEntityDependencies<D, K> {

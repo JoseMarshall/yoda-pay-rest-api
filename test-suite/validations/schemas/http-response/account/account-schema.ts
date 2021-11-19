@@ -1,7 +1,5 @@
 import joi from 'joi';
 
-import joiValidator from '../../index';
-
 export default joi.object({
   id: joi.string().uuid({ version: 'uuidv4' }).required(),
   _id: joi.string().uuid({ version: 'uuidv4' }),

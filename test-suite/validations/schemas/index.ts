@@ -4,7 +4,7 @@ import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../../src/con
 import CustomError from '../../../src/utils/custom-error';
 
 function JoiValidator<T>(schema: ObjectSchema) {
-  return async (payload: unknown) => {
+  return async (payload: unknown): Promise<T> => {
     try {
       return (await schema.validateAsync(payload)) as Promise<T>;
     } catch (error) {

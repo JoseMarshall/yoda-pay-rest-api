@@ -1,7 +1,4 @@
-import { Express, NextFunction, Request, Response, Router } from 'express';
-import { readdir } from 'fs';
-import path from 'path';
-import { promisify } from 'util';
+import { Express, NextFunction, Request, Response } from 'express';
 
 import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../constants';
 import CustomError from '../../utils/custom-error';

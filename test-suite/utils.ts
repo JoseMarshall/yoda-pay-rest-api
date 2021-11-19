@@ -10,12 +10,15 @@ import { TestMongoose } from './test-mongoose';
 export const makeSutRequest = async (sut: (...param: any) => Promise<any>, ...args: any) =>
   (await sut(...args)) as any;
 
-export async function collectionInit(model: Model<any>, collectionName: `${CollectionNames}`) {
+export async function collectionInit(
+  model: Model<any>,
+  collectionName: `${CollectionNames}`
+): Promise<void> {
   await model.deleteMany({}).lean();
   // eslint-disable-next-line no-restricted-syntax
   for (const element of entitiesCollections[collectionName]) {
     // eslint-disable-next-line no-await-in-loop
-    await model.create(element);
+    await model.create({ _id: element.id, ...element });
   }
 }
 

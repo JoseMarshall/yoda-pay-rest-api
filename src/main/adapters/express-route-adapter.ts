@@ -4,7 +4,15 @@ import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../constants/
 import CustomError from '../../utils/custom-error';
 import { Controller } from './adapters.types';
 
-export const makeMsgBody = (msg: string, payload: Record<string, any>) => ({ msg, payload });
+interface MsgBody {
+  msg: string;
+  payload: Record<string, unknown>;
+}
+
+export const makeMsgBody = (msg: string, payload: Record<string, unknown>): MsgBody => ({
+  msg,
+  payload,
+});
 
 export const adaptExpressRoute =
   (controller: Controller) => async (req: Request, res: Response) => {
@@ -29,8 +37,14 @@ export const adaptExpressRoute =
     }
   };
 
+interface InvalidRouteHandlerResponse {
+  status: number;
+  body: Record<string, unknown>;
+  msg: string;
+}
+
 export function invalidRouteHandler() {
-  return async (req: Request) => ({
+  return async (req: Request): Promise<InvalidRouteHandlerResponse> => ({
     status: 404,
     body: { method: req.method, url: req.url },
     msg: ApiErrorsMessage.RouteNotFound,

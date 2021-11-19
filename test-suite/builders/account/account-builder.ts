@@ -32,7 +32,7 @@ class AccountBuilder {
   }
 
   withPhone(phone?: string) {
-    this._entity.phone = phone ?? faker.phone.phoneNumber();
+    this._entity.phone = phone ?? faker.phone.phoneNumber('### ### ###');
     return this;
   }
 

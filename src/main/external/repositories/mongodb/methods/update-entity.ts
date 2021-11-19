@@ -10,11 +10,11 @@ export function makeUpdateOneEntity<D extends Document, T>({
   model,
   transaction,
 }: MakeUpdateOneEntityData<D>) {
-  return async (query: Query, body: Omit<Record<string, any>, keyof Entity>) => {
+  return async (query: Query, body: Omit<Record<string, unknown>, keyof Entity>): Promise<T> => {
     const doc = await queryGuard<D>(
       model
         .findOneAndUpdate(
-          { id: query.id, disabled: false } as FilterQuery<unknown>,
+          { disabled: false, ...query } as FilterQuery<unknown>,
           body as FilterQuery<unknown>,
           {
             new: true,

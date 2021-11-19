@@ -11,7 +11,10 @@
   "extends": [
     "airbnb",
     "prettier",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "env": {
     "es6": true,
@@ -41,7 +44,9 @@
     "import/no-duplicates": "error",
     "no-param-reassign": "error",
     "no-shadow": "off",
-    "no-unused-vars": "off",
-    "no-else-return": "warn"
+    "no-unused-vars": "warn",
+    "no-else-return": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
