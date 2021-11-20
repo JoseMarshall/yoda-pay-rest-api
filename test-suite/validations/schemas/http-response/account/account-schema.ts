@@ -8,7 +8,7 @@ export default joi.object({
   phone: joi.string().required(),
   address: joi.string().required(),
   disabled: joi.boolean(),
-  disabledAt: joi.date(),
+  disabledAt: joi.alternatives(joi.date(), joi.valid(null)),
   createdAt: joi.date().required(),
   updatedAt: joi.date().required(),
 });
