@@ -4,23 +4,12 @@ export interface GetAllAccounts extends GetAll {
   name?: string;
 }
 
+export type AccountIdentifier = Record<'id' | 'cpf', string>;
+
 export interface UpdateOneAccount {
-  query: {
-    id?: string;
-    cpf?: string;
-  };
+  query: AccountIdentifier;
   body: {
     phone?: string;
     address?: string;
   };
-}
-
-export interface EnableAccount {
-  id?: string;
-  cpf?: string;
-}
-
-export interface DisableAccount {
-  id?: string;
-  cpf?: string;
 }

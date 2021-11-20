@@ -6,16 +6,16 @@ export interface GetAllEntitiesData<T> {
   count: number;
 }
 
-export interface QueryGetAll {
+export type QueryGetAll = {
   page: string;
   limit?: string;
   sortBy?: string;
-  [x: string]: string;
-}
+  // [x: string]: string;
+};
 
 export interface Query {
   id?: string;
-  [x: string]: string;
+  [x: string]: unknown;
 }
 
 export interface DeletedEntity {
@@ -42,7 +42,12 @@ export interface IUnitOfWork {
   startTransaction(): Promise<void>;
 }
 
-export interface DatabaseHelper<Collection = any, Model = any, Schema = any, Instance = any> {
+export interface DatabaseHelper<
+  Collection = unknown,
+  Model = unknown,
+  Schema = unknown,
+  Instance = unknown
+> {
   connect(): Promise<void>;
   disconnect(): Promise<void>;
   getCollection(name: string): Collection | undefined;

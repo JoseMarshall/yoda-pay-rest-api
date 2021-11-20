@@ -1,9 +1,11 @@
 import { ClientSession, Document, Model } from 'mongoose';
 
-export interface MakeGetAllEntitiesDependencies<D, K> {
+import { Query } from '../repository.types';
+
+export interface MakeGetAllEntitiesDependencies<K> {
   projection?: Record<string, 0 | 1 | boolean>;
-  formatData?: (data: ReadonlyArray<D>) => ReadonlyArray<K>;
-  formatQuery?: (query: Record<string, string | unknown>) => Record<string, unknown>;
+  formatData?: (data: ReadonlyArray<Document>) => ReadonlyArray<K>;
+  formatQuery?: (query: Query) => Record<string, unknown>;
 }
 
 export interface MakeGetOneEntityDependencies<D, K> {
@@ -28,7 +30,7 @@ export interface MakeGetOneEntityData<D extends Document, K> {
 
 export interface MakeGetAllEntityData<D extends Document, K> {
   model: Model<D>;
-  options: MakeGetAllEntitiesDependencies<D, K>;
+  options: MakeGetAllEntitiesDependencies<K>;
 }
 
 export interface MakeUpdateOneEntityData<D extends Document> {

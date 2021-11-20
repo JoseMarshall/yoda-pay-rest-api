@@ -1,7 +1,7 @@
 import joi from 'joi';
 
 import joiValidator from '../../../index';
-import { EnableAccount } from '../../../types/account';
+import { AccountIdentifier } from '../../../types/account';
 
 const enableAccountSchema = joi
   .object({
@@ -12,4 +12,4 @@ const enableAccountSchema = joi
   .required()
   .unknown(false);
 
-export default joiValidator<EnableAccount>(enableAccountSchema);
+export default joiValidator<AccountIdentifier>(enableAccountSchema);

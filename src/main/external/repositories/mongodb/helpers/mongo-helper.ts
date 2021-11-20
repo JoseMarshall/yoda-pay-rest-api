@@ -1,4 +1,4 @@
-import mongoose, { Collection, Model, model, Query, Schema } from 'mongoose';
+import mongoose, { Collection, Document, Model, model, Query, Schema } from 'mongoose';
 
 import { DatabaseHelper } from '../../repository.types';
 
@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 
 const client = mongoose;
 
-export const MongoHelper: DatabaseHelper<Collection, Model<any>, Schema, typeof mongoose> = {
+export const MongoHelper: DatabaseHelper<Collection, Model<Document>, Schema, typeof mongoose> = {
   async connect(): Promise<void> {
     if (process.env.MONGO_URL)
       await client.connect(process.env.MONGO_URL!, {
