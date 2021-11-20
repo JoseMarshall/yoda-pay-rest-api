@@ -1,5 +1,5 @@
 export enum ApiErrorsName {
-  DuplicateKey = 'DUPLICATE_KEY',
+  DuplicatedValue = 'DUPLICATED_VALUE',
   GenericName = 'ERROR',
   MissingFields = 'MISSING_FIELDS',
   NoMatchedSchema = 'NO_MATCHED_SCHEMA',
@@ -19,11 +19,13 @@ export enum ApiErrorsMessage {
   RequestProcessedError = 'The request was well-formed but was unable to be followed due to semantic errors',
   NoMatchedSchema = 'The data sent does not obey the defined schema',
   CreatedSuccessfully = 'Entity created successfully!',
-  DeletedSuccessfully = 'Entity deleted successfully!',
-  FoundSuccessfully = 'Entity found!',
+  DisabledSuccessfully = 'Entity disabled successfully!',
+  FoundSuccessfully = 'Entities found, check the result on payload',
   UpdatedSuccessfully = 'Entity updated successfully!',
   FailureCreating = 'Failed to create the entity, probably due to some data entered incorrectly, please check your form data',
   FailureUpdating = 'Failed to update the entity, probably due to some data entered incorrectly, please check the data on your form',
+  DuplicatedValue = 'Duplicated information, please enter other value(s) for the field(s) listed in details',
+  AccountNotFoundEnabledOrDisabled = 'The account could not be found, it seems there is no account that fills the requirements for the operation you are attempting to',
 }
 
 export type ApiErrorsStatusCode =

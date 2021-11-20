@@ -6,7 +6,7 @@ import {
   dropDatabase,
   makeSutRequest,
 } from '../../../../../../../test-suite/utils';
-import deleteAccountValidator from '../../../../../../../test-suite/validations/schemas/http-response/account/delete-account-validator';
+import disableAccountValidator from '../../../../../../../test-suite/validations/schemas/http-response/account/disable-account-validator';
 import { CollectionNames } from '../../../../../../constants';
 import { AccountModel } from '../../models';
 import { makeDeleteOneEntity } from '../index';
@@ -32,7 +32,7 @@ describe('deleteOneEntity dependencies', () => {
   it('should delete the entity having the passed ID', async () => {
     const query = { id: entitiesCollections.accounts[0].id };
     const result = await makeSutRequest(sut({ model }), query);
-    const validated = await deleteAccountValidator(result);
+    const validated = await disableAccountValidator(result);
 
     expect(validated).toBeDefined();
   });
@@ -41,7 +41,7 @@ describe('deleteOneEntity dependencies', () => {
     const query = { cpf: entitiesCollections.accounts[0].cpf };
     await model.updateOne(query, { disabled: false });
     const result = await makeSutRequest(sut({ model }), query);
-    const validated = await deleteAccountValidator(result);
+    const validated = await disableAccountValidator(result);
 
     expect(validated).toBeDefined();
   });

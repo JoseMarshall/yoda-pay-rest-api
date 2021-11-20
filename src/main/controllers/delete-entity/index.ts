@@ -14,7 +14,7 @@ function makeDeleteEntityController<D, K>({
     return {
       status: 200,
       body: result.payload,
-      msg: ApiErrorsMessage.DeletedSuccessfully,
+      msg: ApiErrorsMessage.DisabledSuccessfully,
     };
   };
 }

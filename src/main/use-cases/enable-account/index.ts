@@ -29,7 +29,7 @@ export function enableAccountUC() {
             type: ApiErrorsType.GenericType,
             message: ApiErrorsMessage.FailureUpdating,
             stack: error.stack,
-            details: error,
+            details: { ...error, message: ApiErrorsMessage.AccountNotFoundEnabledOrDisabled },
           });
     }
   };

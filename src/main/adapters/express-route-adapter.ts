@@ -6,10 +6,10 @@ import { Controller } from './adapters.types';
 
 interface MsgBody {
   msg: string;
-  payload: Record<string, unknown>;
+  payload: unknown;
 }
 
-export const makeMsgBody = (msg: string, payload: Record<string, unknown>): MsgBody => ({
+export const makeMsgBody = (msg: string, payload: unknown): MsgBody => ({
   msg,
   payload,
 });
@@ -39,8 +39,8 @@ export const adaptExpressRoute =
 
 interface InvalidRouteHandlerResponse {
   status: number;
-  body: Record<string, unknown>;
-  msg: string;
+  body: unknown;
+  msg: `${ApiErrorsMessage}`;
 }
 
 export function invalidRouteHandler() {
