@@ -34,7 +34,7 @@ export const MongoHelper: DatabaseHelper<Collection, Model<Document>, Schema, ty
 };
 
 export async function queryGuard<T>(
-  fn: Query<T, Document> | Promise<T | null>,
+  fn: Query<T, any> | Promise<T | null>,
   msg?: string
 ): Promise<T> {
   const data = await fn;
