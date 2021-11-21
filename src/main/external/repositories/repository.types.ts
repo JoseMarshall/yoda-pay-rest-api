@@ -9,7 +9,7 @@ export interface GetAllEntitiesData<T> {
 export type QueryGetAll = {
   page: string;
   limit?: string;
-  sortBy?: string;
+  sort?: string;
   // [x: string]: string;
 };
 

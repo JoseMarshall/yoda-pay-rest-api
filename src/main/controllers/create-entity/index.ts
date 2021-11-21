@@ -1,4 +1,4 @@
-import { ApiErrorsMessage } from '../../../constants';
+import { ApiMessages } from '../../../constants';
 import { HttpRequest } from '../../adapters/adapters.types';
 import { MakeCreateOneEntityDependencies } from './create-entity.types';
 
@@ -13,7 +13,7 @@ function makeCreateOneEntityController<D, K>({
     return {
       status: 201,
       body: result.payload,
-      msg: ApiErrorsMessage.CreatedSuccessfully,
+      msg: ApiMessages.CreatedSuccessfully,
     };
   };
 }

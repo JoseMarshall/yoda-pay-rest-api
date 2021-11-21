@@ -5,7 +5,7 @@ import joiValidator from '../../index';
 export const CustomErrorSchema = joi
   .object({
     details: joi.object().required(),
-    message: joi.string().required().allow(''),
+    message: joi.string().allow(''),
     name: joi.string().required(),
     type: joi.string().required(),
     stack: joi.string().allow(''),

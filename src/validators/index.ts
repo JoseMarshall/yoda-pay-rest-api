@@ -1,6 +1,6 @@
 import { ObjectSchema, ValidationError } from 'joi';
 
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../constants';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../constants';
 import CustomError from '../utils/custom-error';
 
 function JoiValidator<T>(schema: ObjectSchema) {
@@ -15,7 +15,7 @@ function JoiValidator<T>(schema: ObjectSchema) {
             stack: '',
             type: ApiErrorsType.ValidationError,
             name: ApiErrorsName.NoMatchedSchema,
-            message: ApiErrorsMessage.NoMatchedSchema,
+            message: ApiMessages.NoMatchedSchema,
           })
         : new CustomError({
             details: error,
@@ -23,7 +23,7 @@ function JoiValidator<T>(schema: ObjectSchema) {
             stack: error.stack,
             type: ApiErrorsType.InternalError,
             name: ApiErrorsName.GenericName,
-            message: ApiErrorsMessage.InternalError,
+            message: ApiMessages.InternalError,
           });
     }
   };

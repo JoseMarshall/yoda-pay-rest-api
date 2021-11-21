@@ -17,3 +17,14 @@ export const formatQueryToRegex = (query: Record<string, string>): Record<string
       ? { ...acc, [queryKey]: value }
       : { ...acc, [queryKey]: makeCaseInsensitiveRegex(value) };
   }, {});
+
+/**
+ * @description Convert a string to an object understandable by sort option in mongoose
+ * @param str The string to be converted ex: `-name,+dob,+status`
+ */
+export const makeSortQuery = (str: string) =>
+  str.split(',').reduce((result: Record<string, unknown>, curr) => {
+    const sign = curr[0] === '-' ? -1 : 1;
+    const key = curr.replace(/^(\+|-){1}/, '');
+    return { ...result, [key]: sign };
+  }, {});

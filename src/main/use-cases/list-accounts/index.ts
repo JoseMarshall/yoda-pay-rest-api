@@ -1,4 +1,4 @@
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../../constants';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../../constants';
 import { IAccount } from '../../../entities/account/account.types';
 import CustomError from '../../../utils/custom-error';
 import { GetAllAccounts } from '../../../validators/types/account';
@@ -26,10 +26,10 @@ export function listAccountsUC() {
       throw error instanceof CustomError
         ? error
         : new CustomError({
-            statusCode: 422,
+            statusCode: 400,
             name: ApiErrorsName.GenericName,
             type: ApiErrorsType.GenericType,
-            message: ApiErrorsMessage.FailureUpdating,
+            message: ApiMessages.RequestProcessedError,
             stack: error.stack,
             details: error,
           });

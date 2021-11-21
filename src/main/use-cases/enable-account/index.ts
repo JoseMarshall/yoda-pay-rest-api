@@ -1,4 +1,4 @@
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../../constants';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../../constants';
 import CustomError from '../../../utils/custom-error';
 import { AccountIdentifier } from '../../../validators/types/account';
 import uow from '../../external/repositories/mongodb/unit-of-work';
@@ -24,12 +24,12 @@ export function enableAccountUC() {
       throw error instanceof CustomError
         ? error
         : new CustomError({
-            statusCode: 422,
+            statusCode: 404,
             name: ApiErrorsName.GenericName,
             type: ApiErrorsType.GenericType,
-            message: ApiErrorsMessage.FailureUpdating,
+            message: ApiMessages.FailureUpdating,
             stack: error.stack,
-            details: error,
+            details: { ...error, message: ApiMessages.AccountNotFoundEnabledOrDisabled },
           });
     }
   };

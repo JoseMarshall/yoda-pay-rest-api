@@ -1,4 +1,4 @@
-import { ApiErrorsMessage } from '../../../constants';
+import { ApiMessages } from '../../../constants';
 import { HttpRequest } from '../../adapters/adapters.types';
 import { MakeGetAllEntitiesDependencies } from './get-all-entities.types';
 
@@ -15,7 +15,7 @@ function makeGetAllEntitiesController<D, K>({
     return {
       status: 200,
       body: result.payload,
-      msg: ApiErrorsMessage.FoundSuccessfully,
+      msg: ApiMessages.FoundSuccessfully,
     };
   };
 }

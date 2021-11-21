@@ -1,4 +1,4 @@
-import { ApiErrorsMessage } from '../../../constants';
+import { ApiMessages } from '../../../constants';
 import { HttpRequest } from '../../adapters/adapters.types';
 import { MakeDeleteEntityDependencies } from './delete-entity.types';
 
@@ -14,7 +14,7 @@ function makeDeleteEntityController<D, K>({
     return {
       status: 200,
       body: result.payload,
-      msg: ApiErrorsMessage.DeletedSuccessfully,
+      msg: ApiMessages.DisabledSuccessfully,
     };
   };
 }

@@ -1,4 +1,4 @@
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../../constants';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../../constants';
 import { makeAccount } from '../../../entities/account';
 import { IAccountInput } from '../../../entities/account/account.types';
 import CustomError from '../../../utils/custom-error';
@@ -22,7 +22,7 @@ export function createAccountUC() {
             statusCode: 422,
             name: ApiErrorsName.GenericName,
             type: ApiErrorsType.GenericType,
-            message: ApiErrorsMessage.FailureCreating,
+            message: ApiMessages.FailureCreating,
             stack: error.stack,
             details: error,
           });

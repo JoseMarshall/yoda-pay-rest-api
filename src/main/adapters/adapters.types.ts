@@ -1,3 +1,5 @@
+import { ApiMessages } from '../../constants';
+
 export interface HttpRequest {
   body?: Record<string, unknown>;
   query: Record<string, unknown>;
@@ -6,8 +8,8 @@ export interface HttpRequest {
 
 export interface EndpointResponse {
   status: number;
-  body: Record<string, unknown>;
-  msg: string;
+  body: unknown;
+  msg: `${ApiMessages}`;
 }
 
 export type RequestValidator<K, T extends HttpRequest = HttpRequest> = (req: T) => Promise<K>;
