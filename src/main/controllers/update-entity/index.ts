@@ -11,7 +11,7 @@ function makeUpdateEntityController<D, K>({
     const result = await update(validatedReq);
 
     return {
-      status: 201,
+      status: 200,
       body: result.payload,
       msg: ApiErrorsMessage.UpdatedSuccessfully,
     };

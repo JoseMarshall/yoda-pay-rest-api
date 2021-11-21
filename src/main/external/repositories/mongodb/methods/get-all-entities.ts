@@ -27,7 +27,7 @@ export function makeGetAllEntities<D extends Document, K>({
                 {
                   $match: { disabled: false, ...formattedQuery },
                 },
-                { $sort: makeSortQuery(sort) },
+                ...(sort ? [{ $sort: makeSortQuery(sort) }] : []),
                 { $skip: skip },
                 { $limit: docPerPage || 15 },
                 {

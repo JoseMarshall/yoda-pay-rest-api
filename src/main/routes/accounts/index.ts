@@ -14,7 +14,6 @@ router.patch('/disable', adaptExpressRoute(disableAccount));
 router.patch('/', adaptExpressRoute(updateOneAccount));
 
 router.get('/', adaptExpressRoute(getAllAccounts));
-
 router.post('/', adaptExpressRoute(createAccount));
 
 export default router;

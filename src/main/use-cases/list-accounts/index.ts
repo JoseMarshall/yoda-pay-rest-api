@@ -29,7 +29,7 @@ export function listAccountsUC() {
             statusCode: 422,
             name: ApiErrorsName.GenericName,
             type: ApiErrorsType.GenericType,
-            message: ApiErrorsMessage.FailureUpdating,
+            message: ApiErrorsMessage.RequestProcessedError,
             stack: error.stack,
             details: error,
           });
