@@ -28,7 +28,7 @@ describe(makeGetAllEntities.name, () => {
     await disconnect();
   });
 
-  it('should get the first 15 entities ordered by updatedAt descending when limit and sortBy not specified', async () => {
+  it('should get the first 15 entities ordered by updatedAt descending when limit and sort not specified', async () => {
     const query = {
       page: '1',
     };

@@ -9,9 +9,9 @@ import updateOneAccount from '../../factories/account/update-account';
 
 const router = Router();
 
-router.put('/enable', adaptExpressRoute(enableAccount));
-router.put('/disable', adaptExpressRoute(disableAccount));
-router.put('/update', adaptExpressRoute(updateOneAccount));
+router.patch('/enable', adaptExpressRoute(enableAccount));
+router.patch('/disable', adaptExpressRoute(disableAccount));
+router.patch('/', adaptExpressRoute(updateOneAccount));
 
 router.get('/', adaptExpressRoute(getAllAccounts));
 

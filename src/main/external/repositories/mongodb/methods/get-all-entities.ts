@@ -2,7 +2,7 @@ import { Document } from 'mongoose';
 
 import { safeParseInt } from '../../../../../utils/data-parsers';
 import { QueryGetAll } from '../../repository.types';
-import { queryGuard } from '../helpers';
+import { makeSortQuery, queryGuard } from '../helpers';
 import { GetAllEntitiesAggregatedData, MakeGetAllEntityData } from '../mongoose.types';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -11,7 +11,7 @@ export function makeGetAllEntities<D extends Document, K>({
   options,
 }: MakeGetAllEntityData<D, K>) {
   return async (query: QueryGetAll & Record<string, unknown>) => {
-    const { page, limit, sortBy, ...filteredQuery } = query;
+    const { page, limit, sort, ...filteredQuery } = query;
     const pageNumber = safeParseInt(page, 10);
     const docPerPage = safeParseInt(limit ?? '0', 10);
     const skip = docPerPage > 0 ? docPerPage * (pageNumber - 1) : 0;
@@ -27,7 +27,7 @@ export function makeGetAllEntities<D extends Document, K>({
                 {
                   $match: { disabled: false, ...formattedQuery },
                 },
-                { $sort: JSON.parse(sortBy ?? `{"updatedAt}":-1}`) },
+                { $sort: makeSortQuery(sort) },
                 { $skip: skip },
                 { $limit: docPerPage || 15 },
                 {

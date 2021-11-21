@@ -1,5 +1,5 @@
 export interface GetAll {
   page: string;
   limit?: string;
-  sortBy?: string;
+  sort?: string;
 }
