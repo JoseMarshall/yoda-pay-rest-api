@@ -25,6 +25,6 @@ export const formatQueryToRegex = (query: Record<string, string>): Record<string
 export const makeSortQuery = (str: string) =>
   str.split(',').reduce((result: Record<string, unknown>, curr) => {
     const sign = curr[0] === '-' ? -1 : 1;
-    const key = curr.replace(/^(\+|-){1}/, '');
+    const key = curr.replace(/^(\+| |-){1}/, '');
     return { ...result, [key]: sign };
   }, {});

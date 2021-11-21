@@ -2,7 +2,7 @@ import { makeSortQuery } from '../query-formatters';
 
 const testCases: (string | Record<string, 1 | -1> | any)[][] = [
   ['firstName,lastName', { firstName: 1, lastName: 1 }],
-  ['-firstName,lastName', { firstName: -1, lastName: 1 }],
+  ['-firstName,+lastName', { firstName: -1, lastName: 1 }],
   ['firstName,-lastName', { firstName: 1, lastName: -1 }],
   ['-firstName,-lastName', { firstName: -1, lastName: -1 }],
 ];
