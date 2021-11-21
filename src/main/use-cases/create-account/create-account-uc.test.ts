@@ -1,6 +1,5 @@
 import AccountBuilder from '../../../../test-suite/builders/account/account-builder';
 import entitiesCollections from '../../../../test-suite/entities-collections';
-import { mockCommitChanges, mockRollback } from '../../../../test-suite/global-mocks';
 import {
   collectionInit,
   connect,

@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../../../../constants';
+import { ApiMessages, ApiErrorsName, ApiErrorsType } from '../../../../../constants';
 import { Entity } from '../../../../../entities/entity.types';
 import CustomError from '../../../../../utils/custom-error';
 import { queryGuard } from '../helpers';
@@ -28,7 +28,7 @@ export function makeCreateEntity<D extends Document, K extends Entity>({
             statusCode: 422,
             name: ApiErrorsName.DuplicatedValue,
             type: ApiErrorsType.ValidationError,
-            message: ApiErrorsMessage.DuplicatedValue,
+            message: ApiMessages.DuplicatedValue,
             stack: error.stack,
             details: { existingValues: error.keyValue, msg: error.message },
           })

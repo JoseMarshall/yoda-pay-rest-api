@@ -39,7 +39,7 @@ describe(makeUpdateOneEntity.name, () => {
     expect(result.name).toBe(req.body.name);
   });
 
-  it('should get an error due to user not found', async () => {
+  it('should get an error due to entity not found', async () => {
     const req = { query: { id: '1' }, body: { name: 'Mr. John' } };
     try {
       await makeSutRequest(sut({ model }), req.query, req.body);
@@ -58,8 +58,8 @@ describe(makeUpdateOneEntity.name, () => {
     const req2 = { query: { id: account2.id }, body };
 
     const firstResult = await makeSutRequest(sut({ model }), req1.query, req1.body);
-    const userValidatorResult = await updateAccountValidator(firstResult);
-    expect(userValidatorResult).toBeDefined();
+    const accountValidatorResult = await updateAccountValidator(firstResult);
+    expect(accountValidatorResult).toBeDefined();
 
     try {
       await makeSutRequest(sut({ model }), req2.query, req2.body);

@@ -1,4 +1,4 @@
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../../constants';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../../constants';
 import CustomError from '../../../utils/custom-error';
 import { UpdateOneAccount } from '../../../validators/types/account';
 import uow from '../../external/repositories/mongodb/unit-of-work';
@@ -27,9 +27,9 @@ export function updateAccountUC() {
             statusCode: 422,
             name: ApiErrorsName.GenericName,
             type: ApiErrorsType.GenericType,
-            message: ApiErrorsMessage.FailureUpdating,
+            message: ApiMessages.FailureUpdating,
             stack: error.stack,
-            details: { ...error, message: ApiErrorsMessage.AccountNotFoundEnabledOrDisabled },
+            details: { ...error, message: ApiMessages.AccountNotFoundEnabledOrDisabled },
           });
     }
   };

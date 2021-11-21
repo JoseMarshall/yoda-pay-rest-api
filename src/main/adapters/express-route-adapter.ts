@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../constants/errors';
+import { ApiMessages, ApiErrorsName, ApiErrorsType } from '../../constants/errors';
 import CustomError from '../../utils/custom-error';
 import { Controller } from './adapters.types';
 
@@ -23,12 +23,12 @@ export const adaptExpressRoute =
       return error instanceof CustomError
         ? res.status(error.statusCode).json(makeMsgBody(error.message, { error }))
         : res.status(500).json(
-            makeMsgBody(ApiErrorsMessage.InternalError, {
+            makeMsgBody(ApiMessages.InternalError, {
               error: new CustomError({
                 statusCode: 500,
                 name: ApiErrorsName.GenericName,
                 type: ApiErrorsType.GenericType,
-                message: ApiErrorsMessage.InternalError,
+                message: ApiMessages.InternalError,
                 stack: error.stack,
                 details: error,
               }),
@@ -40,13 +40,13 @@ export const adaptExpressRoute =
 interface InvalidRouteHandlerResponse {
   status: number;
   body: unknown;
-  msg: `${ApiErrorsMessage}`;
+  msg: `${ApiMessages}`;
 }
 
 export function invalidRouteHandler() {
   return async (req: Request): Promise<InvalidRouteHandlerResponse> => ({
     status: 404,
     body: { method: req.method, url: req.url },
-    msg: ApiErrorsMessage.RouteNotFound,
+    msg: ApiMessages.RouteNotFound,
   });
 }

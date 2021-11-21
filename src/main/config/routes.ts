@@ -1,6 +1,6 @@
 import { Express, NextFunction, Request, Response } from 'express';
 
-import { ApiErrorsMessage, ApiErrorsName, ApiErrorsType } from '../../constants';
+import { ApiMessages, ApiErrorsName, ApiErrorsType } from '../../constants';
 import { RoutesPaths } from '../../constants/server';
 import CustomError from '../../utils/custom-error';
 import { makeMsgBody } from '../adapters/express-route-adapter';
@@ -17,7 +17,7 @@ export default async (app: Express): Promise<void> => {
    */
   app.use((err: Error, _req: Request, res: Response, _next: NextFunction) =>
     res.status(500).json(
-      makeMsgBody(ApiErrorsMessage.InternalError, {
+      makeMsgBody(ApiMessages.InternalError, {
         error: new CustomError({
           statusCode: 500,
           name: ApiErrorsName.GenericName,

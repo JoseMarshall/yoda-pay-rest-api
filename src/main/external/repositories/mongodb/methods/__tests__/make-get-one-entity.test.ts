@@ -71,7 +71,7 @@ describe(makeGetOneEntity.name, () => {
     expect(Object.keys(result).some(key => key !== 'cpf')).toBe(false);
   });
 
-  it('should get an error due to user not found', async () => {
+  it('should get an error due to entity not found', async () => {
     const query = { id: '1' };
     try {
       await makeSutRequest(sut({ model, options: {} }), query);
