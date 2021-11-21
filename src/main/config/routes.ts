@@ -1,6 +1,6 @@
 import { Express, NextFunction, Request, Response } from 'express';
 
-import { ApiMessages, ApiErrorsName, ApiErrorsType } from '../../constants';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../constants';
 import { RoutesPaths } from '../../constants/server';
 import CustomError from '../../utils/custom-error';
 import { makeMsgBody } from '../adapters/express-route-adapter';

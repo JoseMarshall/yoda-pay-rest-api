@@ -18,7 +18,7 @@ const start = async (DbHelper: DatabaseHelper) => {
 
     const { default: app } = await import('./config/app');
 
-    const port = process.env.PORT ?? 3333;
+    const port = process.env.PORT ?? 4000;
 
     app.listen(port, () =>
       logger.info(`Server running at ${process.env.URL_ROOT ?? 'http://localhost'}:${port}`)
