@@ -1,14 +1,22 @@
 import AccountBuilder from '../../../../../test-suite/builders/account/account-builder';
 import collections from '../../../../../test-suite/entities-collections';
-import { apiRequest, connect, disconnect, dropDatabase } from '../../../../../test-suite/utils';
+import {
+  apiRequest,
+  collectionInit,
+  connect,
+  disconnect,
+  dropDatabase,
+} from '../../../../../test-suite/utils';
 import createAccountValidator from '../../../../../test-suite/validations/schemas/http-response/account/create-account-validator';
 import { MsgBodyErrorValidator } from '../../../../../test-suite/validations/schemas/http-response/errors/custom-error';
 import { ApiMessages, CollectionNames } from '../../../../constants';
 import { RoutesPaths } from '../../../../constants/server';
+import { AccountModel } from '../../../external/repositories/mongodb/models';
 
 describe(`Method POST ${RoutesPaths.Accounts} should create an account`, () => {
   beforeAll(async () => {
     await connect();
+    await collectionInit(AccountModel, CollectionNames.Accounts);
   });
 
   afterAll(async () => {

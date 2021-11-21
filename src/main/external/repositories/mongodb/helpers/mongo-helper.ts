@@ -9,7 +9,7 @@ const client = mongoose;
 export const MongoHelper: DatabaseHelper<Collection, Model<Document>, Schema, typeof mongoose> = {
   async connect(): Promise<void> {
     if (process.env.MONGO_URL)
-      await client.connect(process.env.MONGO_URL!, {
+      await client?.connect(process.env.MONGO_URL!, {
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -42,17 +42,3 @@ export async function queryGuard<T>(
 
   return data;
 }
-
-if (client.connection.readyState === 0) {
-  MongoHelper.connect()
-    .then()
-    .catch(() => {
-      if (process.env.NODE_ENV !== 'test') {
-        process.exit(1);
-      }
-    });
-}
-
-process.on('uncaughtException', () => {
-  process.exit(1);
-});
