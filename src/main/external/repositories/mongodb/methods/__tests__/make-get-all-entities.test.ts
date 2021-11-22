@@ -59,6 +59,44 @@ describe(makeGetAllEntities.name, () => {
     expect(result.data.length).toBe(2);
   });
 
+  it('should get also the disabled entities', async () => {
+    await AccountModel.updateMany({}, { disabled: true, disabledAt: new Date() });
+    const query = {
+      page: '1',
+      limit: '2',
+      'include-disabled': 'true',
+    };
+
+    const result = await makeSutRequest(
+      sut({
+        model,
+        options: {},
+      }),
+      query
+    );
+    await AccountModel.updateMany({}, { disabled: false, disabledAt: null });
+    expect(result.data.length).toBeGreaterThan(0);
+  });
+
+  it('should not get the disabled entities', async () => {
+    await AccountModel.updateMany({}, { disabled: true, disabledAt: new Date() });
+    const query = {
+      page: '1',
+      limit: '2',
+      'include-disabled': 'false',
+    };
+
+    const result = await makeSutRequest(
+      sut({
+        model,
+        options: {},
+      }),
+      query
+    );
+    await AccountModel.updateMany({}, { disabled: false, disabledAt: null });
+    expect(result.data.length).toBe(0);
+  });
+
   it('should get only the entities name', async () => {
     const query = {
       page: '1',
