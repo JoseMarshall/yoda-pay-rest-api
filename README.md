@@ -52,7 +52,13 @@ PORT=4000 #optional The port number the server will be listening on if no-specif
 npm run dev
 ```
 If everything is configured as expected, you will have the project running:
-![Image](https://res.cloudinary.com/olyn/image/upload/v1637593694/GitHub%20Images/Screenshot_2021-11-22_160748_jotajn.png)
+```bash
+> ts-node-dev --respawn --transpile-only src/main/server.ts
+
+[INFO] 19:09:42 ts-node-dev ver. 1.1.8 (using ts-node ver. 9.1.1, typescript ver. 4.4.4)
+[2021-11-22T18:09:55.620Z] INFO (Yoda-Pay/5812 on localhost): Server running at localhost:4000
+
+```
 
 >You can find in the root folder a file named `postman.json` containing a collection with a few requests which you can use to test the endpoints using [Postman](https://www.postman.com/downloads/). To know more about it, visit the following link [Import data files](https://learning.postman.com/docs/running-collections/working-with-data-files/).
 
