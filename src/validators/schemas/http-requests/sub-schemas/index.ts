@@ -7,4 +7,5 @@ export const getAllSchema = {
   page: joi.string().required().regex(pageQueryRegex),
   limit: joi.string().regex(limitQueryRegex),
   sort: joi.string().pattern(sortQueryRegex),
+  'include-disabled': joi.boolean().valid('true', 'false').options({ convert: false }),
 };

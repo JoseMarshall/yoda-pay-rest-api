@@ -1,8 +1,8 @@
 import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../../../constants';
 import {
   getResponseBodySchemaRef,
+  makeGetAllParameters,
   makeQueryParamSchema,
-  paginationParamsArray,
 } from '../../builders';
 import { customError, joiValidationError } from '../../components';
 import { Tags } from '../../enums';
@@ -13,7 +13,7 @@ export const listAccounts = {
     tags: [Tags.Accounts],
     summary: 'end-point to fetch all accounts',
     parameters: [
-      ...paginationParamsArray,
+      ...makeGetAllParameters(),
       makeQueryParamSchema({
         name: 'name',
         type: 'string',
@@ -21,14 +21,6 @@ export const listAccounts = {
           'Filter the accounts by its owner name. Obs.: Its NOT case sensitive, the result will be those accounts with he owner name that contains the specified value',
         required: false,
         example: 'John',
-      }),
-      makeQueryParamSchema({
-        name: 'sort',
-        type: 'string',
-        description:
-          'The field to sort the accounts by, specify + for ascending and - for descending order. Obs.: The + sign is optional',
-        required: false,
-        example: '+name,-cpf',
       }),
     ],
     responses: {

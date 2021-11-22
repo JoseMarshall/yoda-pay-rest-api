@@ -152,3 +152,23 @@ export const paginationParamsArray = [
     example: '10',
   }),
 ];
+
+export const makeGetAllParameters = () => [
+  ...paginationParamsArray,
+  makeQueryParamSchema({
+    name: 'sort',
+    type: 'string',
+    description:
+      'The fields to sort the entities by, specify + for ascending and - for descending order. Obs.: The + sign is optional',
+    required: false,
+    example: '+name,-cpf',
+  }),
+  makeQueryParamSchema({
+    name: 'include-disabled',
+    type: 'boolean',
+    description:
+      'Indicates if the user wants to include the disabled entities on its search results',
+    required: false,
+    example: 'true',
+  }),
+];

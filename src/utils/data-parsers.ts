@@ -5,8 +5,14 @@
  * If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.
  * All other strings are considered decimal.
  */
-// eslint-disable-next-line import/prefer-default-export
 export const safeParseInt = (s: string, radix?: number) => {
   const parsedData = parseInt(s, radix);
   return Number.isNaN(parsedData) ? 0 : parsedData;
 };
+
+/**
+ * Safely parses a string to a Boolean.
+ * @return `true` if `s` matches `"true"` (case insensitive); `false` otherwise
+ * @param s the string to be parsed
+ */
+export const safeParseBoolean = (s: string) => /^true$/i.test(s);

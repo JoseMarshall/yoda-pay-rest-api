@@ -22,14 +22,34 @@ describe(`Method GET ${RoutesPaths.Accounts} should list accounts`, () => {
     await disconnect();
   });
 
-  it('should return a 200 code response', async () => {
+  it('should return a 200 code response - only the enabled accounts', async () => {
+    await AccountModel.updateOne({}, { disabled: true, disabledAt: new Date() });
     const response = await apiRequest
       .get(RoutesPaths.Accounts)
       .query({ page: '1', limit: '3' })
       .send();
     const validated = await getAllAccountsValidator(response.body.payload);
+
     expect(response.status).toBe(200);
     expect(validated).toBeDefined();
+    expect(response.body.payload.data.some(account => account.disabled)).toBe(false);
+    expect(response.body.payload.data.length).toBeGreaterThan(0);
+  });
+
+  it('should return a 200 code response and a list with accounts including the disabled ones', async () => {
+    await AccountModel.updateMany({}, { disabled: true, disabledAt: new Date() });
+
+    const response = await apiRequest
+      .get(RoutesPaths.Accounts)
+      .query({ page: '1', limit: '3', 'include-disabled': 'true' })
+      .send();
+
+    await AccountModel.updateMany({}, { disabled: false, disabledAt: null });
+    const validated = await getAllAccountsValidator(response.body.payload);
+
+    expect(response.status).toBe(200);
+    expect(validated).toBeDefined();
+    expect(response.body.payload.data.length).toBeGreaterThan(0);
   });
 
   it('should return a 422 since page is not valid', async () => {

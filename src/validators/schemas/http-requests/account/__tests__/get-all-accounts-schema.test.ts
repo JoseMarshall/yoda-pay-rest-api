@@ -10,6 +10,7 @@ describe(getAllAccountsSchema.name, () => {
     const query = {
       page: '1',
       limit: '10',
+      'include-disabled': 'true',
       name: faker.name.findName(),
     };
 
