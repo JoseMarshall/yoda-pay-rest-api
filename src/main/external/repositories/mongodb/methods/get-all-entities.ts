@@ -17,6 +17,9 @@ export function makeGetAllEntities<D extends Document, K>({
     const skip = docPerPage > 0 ? docPerPage * (pageNumber - 1) : 0;
 
     const formattedQuery = options.formatQuery ? options.formatQuery(filteredQuery) : filteredQuery;
+    const matchConditions = safeParseBoolean(includeDisabled)
+      ? formattedQuery
+      : { disabled: false, ...formattedQuery };
 
     const document = await queryGuard<GetAllEntitiesAggregatedData<D>[]>(
       model
@@ -25,9 +28,7 @@ export function makeGetAllEntities<D extends Document, K>({
             $facet: {
               data: [
                 {
-                  $match: safeParseBoolean(includeDisabled)
-                    ? formattedQuery
-                    : { disabled: false, ...formattedQuery },
+                  $match: matchConditions,
                 },
                 ...(sort ? [{ $sort: makeSortQuery(sort) }] : []),
                 { $skip: skip },
@@ -41,7 +42,7 @@ export function makeGetAllEntities<D extends Document, K>({
               ],
               count: [
                 {
-                  $match: { disabled: false, ...formattedQuery },
+                  $match: matchConditions,
                 },
                 { $count: 'total' },
               ],
