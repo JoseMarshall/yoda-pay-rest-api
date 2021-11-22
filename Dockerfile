@@ -9,9 +9,3 @@ RUN npm install
 COPY src ./src
 
 RUN npm run build
-
-#ENV
-ENV NODE_ENV production
-
-EXPOSE 4000
-CMD [ "node", "./built/src/main/server.js" ]

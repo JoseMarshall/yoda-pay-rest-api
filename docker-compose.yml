@@ -17,7 +17,7 @@ services:
       - MONGO_URL=mongodb://mongo:27017/yoda-pay
   mongo:
     image: mongo:5.0.2
-    container_name: database
+    container_name: mongo-database
     restart: unless-stopped
     ports:
       - 27017:27017

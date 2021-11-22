@@ -1,5 +1,5 @@
 export enum Tags {
-  Accounts = 'User',
+  Accounts = 'Accounts',
 }
 
 export enum TimeStamps {
