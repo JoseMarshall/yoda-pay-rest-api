@@ -13,10 +13,8 @@ services:
       - 4000:4000
     command: npm start
     environment:
-      - NODE_ENV=production
       - PORT=4000
       - MONGO_URL=mongodb://mongo:27017/yoda-pay
-      - URL_ROOT=http://localhost
   mongo:
     image: mongo:5.0.2
     container_name: database

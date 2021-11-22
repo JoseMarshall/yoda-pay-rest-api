@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-import { ApiMessages, ApiErrorsName, ApiErrorsType } from '../../../../../constants';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../../../../constants';
 import { Entity } from '../../../../../entities/entity.types';
 import CustomError from '../../../../../utils/custom-error';
 import { queryGuard } from '../helpers';

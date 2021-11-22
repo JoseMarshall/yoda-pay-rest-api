@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { ApiMessages, ApiErrorsName, ApiErrorsType } from '../../constants/errors';
+import { ApiErrorsName, ApiErrorsType, ApiMessages } from '../../constants/errors';
 import CustomError from '../../utils/custom-error';
 import { Controller } from './adapters.types';
 

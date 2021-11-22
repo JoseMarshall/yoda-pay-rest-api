@@ -1,4 +1,5 @@
 import { config } from 'dotenv';
+import { hostname } from 'os';
 import path from 'path';
 
 import { logger } from '../utils/logger';
@@ -19,10 +20,7 @@ const start = async (DbHelper: DatabaseHelper) => {
     const { default: app } = await import('./config/app');
 
     const port = process.env.PORT ?? 4000;
-
-    app.listen(port, () =>
-      logger.info(`Server running at ${process.env.URL_ROOT ?? 'http://localhost'}:${port}`)
-    );
+    app.listen(port, () => logger.info(`Server running at ${hostname()}:${port}`));
   } catch (error) {
     logger.error(error);
   }
