@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: yoda-pay-app
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    build: .
+    volumes:
+      - .:/yoda-pay
+    ports:
+      - 4000:4000
+    command: npm start
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - MONGO_URL=mongodb://mongo:27017/yoda-pay
+      - URL_ROOT=http://localhost
+  mongo:
+    image: mongo:5.0.2
+    container_name: database
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+  
+
+volumes:
+  mongodb:
