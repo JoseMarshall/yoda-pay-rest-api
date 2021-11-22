@@ -1,0 +1,523 @@
+{
+	"info": {
+		"_postman_id": "b172c18e-e5a3-4a16-a87d-eaa20b24992e",
+		"name": "Yoda-App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/accounts?page=1&limit=10&sort=-name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "sort",
+							"value": "-name"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List Accounts",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/accounts?page=1&limit=10&sort=-name",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "-name"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Entities found, check the result on payload\",\n    \"payload\": {\n        \"data\": [\n            {\n                \"disabled\": false,\n                \"id\": \"e5b558a2-772d-4573-9f18-f74c28a017ce\",\n                \"name\": \"jorge\",\n                \"cpf\": \"123-127\",\n                \"phone\": \"897456231\",\n                \"address\": \"Sao Paulo, Brasil\",\n                \"createdAt\": \"2021-11-20T20:01:51.189Z\",\n                \"updatedAt\": \"2021-11-22T00:59:38.295Z\",\n                \"disabledAt\": null\n            },\n            {\n                \"disabled\": false,\n                \"id\": \"4e55aa5e-3b5f-4752-92a5-3cc550f71345\",\n                \"name\": \"hebo\",\n                \"cpf\": \"123-125\",\n                \"phone\": \"930869023\",\n                \"address\": \"Sao Paulo, Brasil\",\n                \"createdAt\": \"2021-11-20T20:01:05.955Z\",\n                \"updatedAt\": \"2021-11-22T01:03:56.669Z\",\n                \"disabledAt\": null\n            },\n            {\n                \"disabled\": false,\n                \"id\": \"028d29d8-5b68-424f-9e6b-a003bea1774c\",\n                \"name\": \"Jonas\",\n                \"cpf\": \"123-589\",\n                \"phone\": \"930869023\",\n                \"address\": \"Rio Grande do Sul, Brasil\",\n                \"createdAt\": \"2021-11-22T00:57:22.976Z\",\n                \"updatedAt\": \"2021-11-22T00:57:22.976Z\"\n            },\n            {\n                \"disabled\": false,\n                \"id\": \"f7e5f6c2-67d5-461d-9768-1084dab4e5ef\",\n                \"name\": \"John Doe\",\n                \"cpf\": \"68814688\",\n                \"phone\": \"9xxxxxxxx\",\n                \"address\": \"Avenida Nova Olinda 1563\",\n                \"createdAt\": \"2021-11-21T17:16:30.391Z\",\n                \"updatedAt\": \"2021-11-22T01:04:34.330Z\",\n                \"disabledAt\": null\n            }\n        ],\n        \"count\": 4\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jonas\",\r\n    \"cpf\": \"123-589\",\r\n    \"phone\": \"930869023\",\r\n    \"address\": \"Rio Grande do Sul, Brasil\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Account",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jonas\",\r\n    \"cpf\": \"123-589\",\r\n    \"phone\": \"930869023\",\r\n    \"address\": \"Rio Grande do Sul, Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update Account by ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"Sao Paulo, Brasil\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/accounts?id=4e55aa5e-3b5f-4752-92a5-3cc550f71345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4e55aa5e-3b5f-4752-92a5-3cc550f71345"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Account by ID",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"Sao Paulo, Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/accounts?id=4e55aa5e-3b5f-4752-92a5-3cc550f71345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4e55aa5e-3b5f-4752-92a5-3cc550f71345"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Entity updated successfully!\",\n    \"payload\": {\n        \"disabled\": false,\n        \"id\": \"4e55aa5e-3b5f-4752-92a5-3cc550f71345\",\n        \"name\": \"hebo\",\n        \"cpf\": \"123-125\",\n        \"phone\": \"930869023\",\n        \"address\": \"Sao Paulo, Brasil\",\n        \"createdAt\": \"2021-11-20T20:01:05.955Z\",\n        \"updatedAt\": \"2021-11-22T01:08:52.348Z\",\n        \"disabledAt\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Account by CPF",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"Sao Paulo, Brasil\",\r\n    \"phone\": \"897456231\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/accounts?cpf=123-127",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "cpf",
+							"value": "123-127"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Account by CPF",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"Sao Paulo, Brasil\",\r\n    \"phone\": \"897456231\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/accounts?cpf=123-127",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "123-127"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Entity updated successfully!\",\n    \"payload\": {\n        \"disabled\": false,\n        \"id\": \"e5b558a2-772d-4573-9f18-f74c28a017ce\",\n        \"name\": \"jorge\",\n        \"cpf\": \"123-127\",\n        \"phone\": \"897456231\",\n        \"address\": \"Sao Paulo, Brasil\",\n        \"createdAt\": \"2021-11-20T20:01:51.189Z\",\n        \"updatedAt\": \"2021-11-22T01:09:12.944Z\",\n        \"disabledAt\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Disable Account by ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/accounts/disable?id=4e55aa5e-3b5f-4752-92a5-3cc550f71345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts",
+						"disable"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4e55aa5e-3b5f-4752-92a5-3cc550f71345"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Disable Account by ID",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/accounts/disable?id=4e55aa5e-3b5f-4752-92a5-3cc550f71345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts",
+								"disable"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4e55aa5e-3b5f-4752-92a5-3cc550f71345"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Entity disabled successfully!\",\n    \"payload\": {\n        \"disabled\": true,\n        \"id\": \"4e55aa5e-3b5f-4752-92a5-3cc550f71345\",\n        \"createdAt\": \"2021-11-20T20:01:05.955Z\",\n        \"updatedAt\": \"2021-11-22T01:09:31.969Z\",\n        \"disabledAt\": \"2021-11-22T01:09:31.969Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Disable Account by CPF",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/accounts/disable?cpf=68814688",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts",
+						"disable"
+					],
+					"query": [
+						{
+							"key": "cpf",
+							"value": "68814688"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Disable Account by CPF",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/accounts/disable?cpf=68814688",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts",
+								"disable"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "68814688"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Entity disabled successfully!\",\n    \"payload\": {\n        \"disabled\": true,\n        \"id\": \"f7e5f6c2-67d5-461d-9768-1084dab4e5ef\",\n        \"createdAt\": \"2021-11-21T17:16:30.391Z\",\n        \"updatedAt\": \"2021-11-22T01:09:50.239Z\",\n        \"disabledAt\": \"2021-11-22T01:09:50.239Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Enable Account by ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/accounts/enable?id=4e55aa5e-3b5f-4752-92a5-3cc550f71345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts",
+						"enable"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4e55aa5e-3b5f-4752-92a5-3cc550f71345"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Enable Account by ID",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/accounts/enable?id=4e55aa5e-3b5f-4752-92a5-3cc550f71345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts",
+								"enable"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4e55aa5e-3b5f-4752-92a5-3cc550f71345"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Entity updated successfully!\",\n    \"payload\": {\n        \"disabled\": false,\n        \"id\": \"4e55aa5e-3b5f-4752-92a5-3cc550f71345\",\n        \"name\": \"hebo\",\n        \"cpf\": \"123-125\",\n        \"phone\": \"930869023\",\n        \"address\": \"Sao Paulo, Brasil\",\n        \"createdAt\": \"2021-11-20T20:01:05.955Z\",\n        \"updatedAt\": \"2021-11-22T01:10:08.522Z\",\n        \"disabledAt\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Enable Account by CPF",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/accounts/enable?cpf=68814688",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"accounts",
+						"enable"
+					],
+					"query": [
+						{
+							"key": "cpf",
+							"value": "68814688"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Enable Account by CPF",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/accounts/enable?cpf=68814688",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts",
+								"enable"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "68814688"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Entity updated successfully!\",\n    \"payload\": {\n        \"disabled\": false,\n        \"id\": \"f7e5f6c2-67d5-461d-9768-1084dab4e5ef\",\n        \"name\": \"John Doe\",\n        \"cpf\": \"68814688\",\n        \"phone\": \"9xxxxxxxx\",\n        \"address\": \"Avenida Nova Olinda 1563\",\n        \"createdAt\": \"2021-11-21T17:16:30.391Z\",\n        \"updatedAt\": \"2021-11-22T01:10:26.062Z\",\n        \"disabledAt\": null\n    }\n}"
+				}
+			]
+		}
+	]
+}
